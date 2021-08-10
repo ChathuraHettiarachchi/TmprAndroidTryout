@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Temper</string>
+    <string name="toolbar_logo">logo</string>
+    <string name="toolbar_search_button">search_button</string>
+    <string name="main_btn_login">Login</string>
+    <string name="main_btn_subscribe">Subscribe</string>
+    <string name="single_item_work_type">N/A</string>
+    <string name="single_item_distance">0 KM</string>
+    <string name="single_item_title">Title</string>
+    <string name="single_item_time">00:00 - 00:00</string>
+    <string name="single_item_euro_symbole">euroSymbole</string>
+    <string name="single_item_rate">1500</string>
+    <string name="main_date">Date</string>
+    <string name="main_imgrightarrow">imgRightArrow</string>
+    <string name="main_fab_filters">Filters</string>
+</resources>

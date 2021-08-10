@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="280dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imgPoster"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius="8dp" />
+
+    <TextView
+        android:id="@+id/txtHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/single_item_work_type"
+        android:textColor="@color/title1_color"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/imgPoster"
+        app:layout_constraintTop_toBottomOf="@+id/imgPoster" />
+
+    <TextView
+        android:id="@+id/txtWorkDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/single_item_distance"
+        android:textColor="@color/title1_color"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtHeading"
+        app:layout_constraintStart_toEndOf="@+id/viDot"
+        app:layout_constraintTop_toTopOf="@+id/txtHeading" />
+
+    <View
+        android:id="@+id/viDot"
+        android:layout_width="2dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/drawable_purple_dot"
+        app:layout_constraintBottom_toBottomOf="@+id/txtHeading"
+        app:layout_constraintStart_toEndOf="@+id/txtHeading"
+        app:layout_constraintTop_toTopOf="@+id/txtHeading">
+
+    </View>
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/single_item_title"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtHeading"
+        app:layout_constraintTop_toBottomOf="@+id/txtHeading" />
+
+    <TextView
+        android:id="@+id/txtTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:text="@string/single_item_time"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+    <RelativeLayout
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:background="@drawable/drawable_top_left_white_ronded"
+        app:layout_constraintBottom_toBottomOf="@+id/imgPoster"
+        app:layout_constraintEnd_toEndOf="@+id/imgPoster">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="4dp">
+            <ImageView
+                android:id="@+id/imgEuro"
+                android:contentDescription="@string/single_item_euro_symbole"
+                android:layout_width="16sp"
+                android:layout_height="16sp"
+                android:background="@drawable/ic_euro_24"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:id="@+id/txtRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/single_item_rate"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/imgEuro"
+                android:layout_marginStart="2dp"
+                android:textSize="16dp"
+                android:textColor="@color/black"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

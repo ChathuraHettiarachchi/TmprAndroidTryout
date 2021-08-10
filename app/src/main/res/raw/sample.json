@@ -1,0 +1,358 @@
+{
+  "data": [
+    {
+      "id": "g6e96wp",
+      "status": "published",
+      "starts_at": "2021-08-08T12:00:00+02:00",
+      "ends_at": "2021-08-08T18:00:00+02:00",
+      "duration": 6,
+      "tempers_needed": 3,
+      "enable_auto_accept_recent_freelancers": false,
+      "cancellation_policy": 72,
+      "archived_at": null,
+      "created_at": "2021-07-20T16:45:41+02:00",
+      "earnings_per_hour": {
+        "currency": "EUR",
+        "amount": 20
+      },
+      "variable_pricing": false,
+      "factoring_allowed": true,
+      "is_flexible": false,
+      "time_variation_message": "",
+      "start_time_earlier_variation": 0,
+      "start_time_later_variation": 0,
+      "end_time_earlier_variation": 0,
+      "end_time_later_variation": 0,
+      "earliest_possible_start_time": "2021-08-08T12:00:00+02:00",
+      "latest_possible_end_time": "2021-08-08T18:00:00+02:00",
+      "links": {
+        "self": "https://temper.works/api/v3/shifts/g6e96wp",
+        "match_aggregates": "https://temper.works/api/v3/shifts/g6e96wp/match-aggregates",
+        "job": "https://temper.works/api/v3/jobs/gza6py"
+      },
+      "open_positions": 1,
+      "high_chance_score": 1,
+      "applications_count": 0,
+      "flexpools": [
+        {
+          "id": "xrwvqp",
+          "name": ""
+        }
+      ],
+      "job": {
+        "id": "gza6py",
+        "title": "Horecatopper voor in de bediening",
+        "is_agency": false,
+        "extra_briefing": "Werken in de bediening bij Bos & Co. \r\nje werkt op een terras met een capaciteit van 200+ zitplaatsen. \r\nDit terras wordt bediend vanuit een buitenbar.\r\n\r\nDe sfeer is relaxt en informeel. \r\nEr zijn geen kledingvereisten. \r\nIndien mooi weer, mag je ook in een korte broek komen werken.\r\n\r\nMocht je vragen hebben over de shift bel of app ons dan.\r\nWhatsApp chat kan via ons algemene nummer.",
+        "dress_code": "",
+        "tips": false,
+        "slug": "horecatopper-voor-in-de-bediening",
+        "reference": "",
+        "archived_at": null,
+        "links": {
+          "hero_380_image": "https://tmpr-photos.ams3.digitaloceanspaces.com/hero380/220173.jpg",
+          "self": "https://temper.works/api/v3/jobs/gza6py",
+          "client": "https://temper.works/api/v3/jobs/gza6py/client",
+          "report_at_address": "https://temper.works/api/v3/jobs/gza6py/report-at-address",
+          "job_category": "https://temper.works/api/v3/jobs/gza6py/job-category",
+          "skills": "https://temper.works/api/v3/jobs/gza6py/skills",
+          "appearances": "https://temper.works/api/v3/jobs/gza6py/appearances"
+        },
+        "skills": [
+          {
+            "id": "pqxprx",
+            "name": "Met 3 borden lopen"
+          },
+          {
+            "id": "vp87vx",
+            "name": "Handheld bedienen"
+          },
+          {
+            "id": "qgxvrx",
+            "name": "Lopen met dienblad"
+          },
+          {
+            "id": "q8prr8",
+            "name": "Inserveren en uithalen"
+          },
+          {
+            "id": "px7zv8",
+            "name": "Opruimen"
+          },
+          {
+            "id": "98aeq8",
+            "name": "Bestellingen opnemen"
+          },
+          {
+            "id": "98avqx",
+            "name": "Snelle service"
+          },
+          {
+            "id": "98zzv8",
+            "name": "Stressbestendig"
+          },
+          {
+            "id": "rxrvpx",
+            "name": "Tafel indekken"
+          },
+          {
+            "id": "e866w8",
+            "name": "Debrasseren"
+          },
+          {
+            "id": "vxwr98",
+            "name": "Gastvrijheid"
+          }
+        ],
+        "project": {
+          "id": "8vqzqe",
+          "name": "Algemeen",
+          "archived_at": null,
+          "client": {
+            "id": "8gw7vy",
+            "name": "BOS & Co",
+            "slug": "hamburg",
+            "registration_name": "De Hoeve B.V.",
+            "registration_id": "76690695",
+            "description": "Wij van BOS & Co houden van lekker eten en drinken. Gewoon goede maaltijden en een heerlijk drankje. Op onze menukaart vind je gerechten uit de hele wereld, maar alles zonder poespas. Ook hebben wij een uitgebreide borrelkaart. Schuif dus gezellig bij ons aan op een van onze terrassen of lekker warm binnen. ",
+            "allow_temper_trial": true,
+            "blocked_minutes_before_shift": null,
+            "links": {
+              "hero_image": "https://tmpr-photos.ams3.digitaloceanspaces.com/hero/199998.jpg",
+              "thumb_image": "https://tmpr-photos.ams3.digitaloceanspaces.com/thumb48/199998.jpg"
+            },
+            "rating": {
+              "count": 43,
+              "average": 4.98
+            },
+            "average_response_time": 4040.96,
+            "factoring_allowed": true,
+            "factoring_payment_term_in_days": 3
+          }
+        },
+        "category": {
+          "id": "z9xaqx",
+          "internalId": 12,
+          "name": "Bediening",
+          "name_translation": {
+            "en_GB": "Serving",
+            "nl_NL": "Bediening"
+          },
+          "slug": "bediening",
+          "links": {
+            "icon": "/assets/img/web/icons/categories/white-line/icon-bediening.svg"
+          }
+        },
+        "report_to": {
+          "name": "Pim Hamburg",
+          "phone": "0161700211",
+          "details": null
+        },
+        "appearances": [],
+        "report_at_address": {
+          "zip_code": "4903RW",
+          "street": "Ketenbaan",
+          "number": "2",
+          "number_with_extra": "2",
+          "extra": "",
+          "city": "Oosterhout",
+          "line1": "Ketenbaan 2",
+          "line2": "4903RW Oosterhout",
+          "links": {
+            "get_directions": "https://www.google.com/maps/dir/?api=1&destination=Ketenbaan+2%2COosterhout+4903RW%2CThe+Netherlands"
+          },
+          "country": {
+            "iso3166_1": "NLD",
+            "human": "Nederland"
+          },
+          "geo": {
+            "lat": 51.611732,
+            "lon": 4.886026
+          },
+          "region": "Breda"
+        }
+      },
+      "recurring_shift_schedule": null,
+      "has_substituted_openings": false,
+      "distance": null,
+      "is_auto_accepted_when_applied": false,
+      "chance_of_success": false,
+      "average_estimated_earnings_per_hour": {
+        "currency": "EUR",
+        "amount": 20
+      }
+    },
+    {
+      "id": "rewgver",
+      "status": "published",
+      "starts_at": "2021-08-08T15:00:00+02:00",
+      "ends_at": "2021-08-08T23:00:00+02:00",
+      "duration": 8,
+      "tempers_needed": 1,
+      "enable_auto_accept_recent_freelancers": true,
+      "cancellation_policy": 48,
+      "archived_at": null,
+      "created_at": "2021-08-02T10:41:08+02:00",
+      "earnings_per_hour": {
+        "currency": "EUR",
+        "amount": 24
+      },
+      "variable_pricing": false,
+      "factoring_allowed": true,
+      "is_flexible": false,
+      "time_variation_message": "",
+      "start_time_earlier_variation": 0,
+      "start_time_later_variation": 0,
+      "end_time_earlier_variation": 0,
+      "end_time_later_variation": 0,
+      "earliest_possible_start_time": "2021-08-08T15:00:00+02:00",
+      "latest_possible_end_time": "2021-08-08T23:00:00+02:00",
+      "links": {
+        "self": "https://temper.works/api/v3/shifts/rewgver",
+        "match_aggregates": "https://temper.works/api/v3/shifts/rewgver/match-aggregates",
+        "job": "https://temper.works/api/v3/jobs/gzyewg"
+      },
+      "open_positions": 1,
+      "high_chance_score": 1,
+      "applications_count": 0,
+      "flexpools": [
+        {
+          "id": "8ar6ep",
+          "name": ""
+        }
+      ],
+      "job": {
+        "id": "gzyewg",
+        "title": "Zelfstandig werkend kok",
+        "is_agency": false,
+        "extra_briefing": "Graag 10 minuten voor tijd aanwezig en goedgehumeurd :)",
+        "dress_code": "",
+        "tips": false,
+        "slug": "zelfstandig-werkend-kok",
+        "reference": "",
+        "archived_at": null,
+        "links": {
+          "self": "https://temper.works/api/v3/jobs/gzyewg",
+          "client": "https://temper.works/api/v3/jobs/gzyewg/client",
+          "report_at_address": "https://temper.works/api/v3/jobs/gzyewg/report-at-address",
+          "job_category": "https://temper.works/api/v3/jobs/gzyewg/job-category",
+          "skills": "https://temper.works/api/v3/jobs/gzyewg/skills",
+          "appearances": "https://temper.works/api/v3/jobs/gzyewg/appearances"
+        },
+        "skills": [
+          {
+            "id": "7xgzr8",
+            "name": ">2 jaar ervaring"
+          },
+          {
+            "id": "rx9g7x",
+            "name": "Basiskok"
+          },
+          {
+            "id": "qxpvrx",
+            "name": "Mise-en-place maken"
+          },
+          {
+            "id": "rxr9p8",
+            "name": "Keuken schoonmaken"
+          },
+          {
+            "id": "gxeerx",
+            "name": ">3 jaar ervaring"
+          },
+          {
+            "id": "9xzpvx",
+            "name": "Keukenapparatuur bedienen"
+          },
+          {
+            "id": "q8p9rx",
+            "name": "Portioneren"
+          },
+          {
+            "id": "x9vqa8",
+            "name": "Kennis van HACCP (hygiënecode)"
+          }
+        ],
+        "project": {
+          "id": "8qwpyv",
+          "name": "Seizoen",
+          "archived_at": null,
+          "client": {
+            "id": "xav9yp",
+            "name": "Pacific Amsterdam",
+            "slug": "pacific-amsterdam",
+            "registration_name": "Horeca Pacific Parc B.V.",
+            "registration_id": "71575472",
+            "description": "Eten, drinken, dansen en genieten: het kan allemaal bij Pacific! Of het nu in de ochtend, middag of diep in de nacht is, Pacific is een all-day hotspot. Zowel binnen als buiten kun je genieten van een kopje koffie, een lekkere lunch of diner of kom je gewoon een borrel drinken en dans je tot in de late uurtjes; Pacific is dé plek voor iedereen!",
+            "allow_temper_trial": true,
+            "blocked_minutes_before_shift": null,
+            "links": {
+              "hero_image": "https://tmpr-photos.ams3.digitaloceanspaces.com/hero/184899.jpg",
+              "thumb_image": "https://tmpr-photos.ams3.digitaloceanspaces.com/thumb48/184899.jpg"
+            },
+            "rating": {
+              "count": 33,
+              "average": 4.91
+            },
+            "average_response_time": 1548.91,
+            "factoring_allowed": true,
+            "factoring_payment_term_in_days": 3
+          }
+        },
+        "category": {
+          "id": "6vxw9x",
+          "internalId": 8,
+          "name": "Zelfstandig werkend kok",
+          "name_translation": {
+            "en_GB": "Independent chef",
+            "nl_NL": "Zelfstandig werkend kok"
+          },
+          "slug": "zelfstandig-werkend-kok",
+          "links": {
+            "icon": "/assets/img/web/icons/categories/white-line/icon-zelfstandig-werkend-kok.svg"
+          }
+        },
+        "report_to": {
+          "name": "Jeroen Donker",
+          "phone": "",
+          "details": null
+        },
+        "appearances": [],
+        "report_at_address": {
+          "zip_code": "1014DA",
+          "street": "Polonceau-kade",
+          "number": "23",
+          "number_with_extra": "23",
+          "extra": "",
+          "city": "Amsterdam",
+          "line1": "Polonceau-kade 23",
+          "line2": "1014DA Amsterdam",
+          "links": {
+            "get_directions": "https://www.google.com/maps/dir/?api=1&destination=Polonceau-kade+23%2CAmsterdam+1014DA%2CThe+Netherlands"
+          },
+          "country": {
+            "iso3166_1": "NLD",
+            "human": "Nederland"
+          },
+          "geo": {
+            "lat": 52.38589,
+            "lon": 4.871415
+          },
+          "region": "Amsterdam"
+        }
+      },
+      "recurring_shift_schedule": null,
+      "has_substituted_openings": true,
+      "distance": null,
+      "is_auto_accepted_when_applied": false,
+      "chance_of_success": false,
+      "average_estimated_earnings_per_hour": {
+        "currency": "EUR",
+        "amount": 24
+      }
+    }
+  ],
+  "aggregations": {
+    "count": 2
+  }
+}
