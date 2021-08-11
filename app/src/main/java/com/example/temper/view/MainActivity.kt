@@ -9,16 +9,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.temper.R
 import com.example.temper.adapters.ShiftAdapter
 import com.example.temper.factory.MainViewModelFactory
-import com.example.temper.factory.RepositoryFactory
 import com.example.temper.helpers.*
 import com.example.temper.models.Shift
+import com.example.temper.models.ShiftModel
 import com.example.temper.viewmodels.MainViewModel
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.component_action_buttons.*
 import java.util.*
 
-class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener{
+class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
     private lateinit var shiftsAdapter: ShiftAdapter
     private lateinit var viewModel: MainViewModel
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this, MainViewModelFactory(RepositoryFactory.createMainRepository())).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this, MainViewModelFactory())[MainViewModel::class.java]
 
         initViews()
         initDatePicker()
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener{
     }
 
     // init main views
-    private fun initViews(){
+    private fun initViews() {
         fab.hide()
         swiperefresh.isRefreshing = true
         swiperefresh.setOnRefreshListener {
@@ -46,10 +46,10 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener{
         animWaiting.visible()
         animNoData.gone()
 
-        if(recyclerViewShift != null){
+        if (recyclerViewShift != null) {
             recyclerViewShift.layoutManager = LinearLayoutManager(this)
             shiftsAdapter = ShiftAdapter()
-            recyclerViewShift.adapter =shiftsAdapter
+            recyclerViewShift.adapter = shiftsAdapter
             recyclerViewShift.attachFab(fab)
         }
     }
@@ -60,27 +60,12 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener{
     }
 
     // viewModel methods
-    private fun initViewModel(){
-        viewModel.shiftListLiveData.observe(this, {
-            if(it != null && it.data?.isNotEmpty()!!){
-                shiftsAdapter.setUpdatedData(it.data as ArrayList<Shift>)
-            } else {
-                snackbarError("Something went wrong")
-                animWaiting.gone()
-                animNoData.visible()
-            }
-        });
-
-        viewModel.loadingStatus.observe(this, {
-            if(it!=null && it.equals(MainViewModel.LoadingStatus.LOADING)){
-                swiperefresh.isRefreshing = true
-                animWaiting.visible()
-                fab.hide()
-                shiftsAdapter.setUpdatedData(ArrayList<Shift>())
-            } else {
-                fab.show()
-                animWaiting.gone()
-                swiperefresh.isRefreshing = false
+    private fun initViewModel() {
+        viewModel.shiftState().observe(this, {
+            when (it.currentState) {
+                0 -> loadingData()
+                1 -> loadingDataSuccess(it.data as ShiftModel)
+                -1 -> loadingDataError()
             }
         });
         viewModel.fetchShifts(txtDate.text.toString())
@@ -104,16 +89,45 @@ class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener{
     }
 
     // change activity
-    private fun addActionListeners(){
-        btnLogin.setOnClickListener { startActivity(Intent(this, LoginActivity::class.java))}
-        btnSubscribe.setOnClickListener { startActivity(Intent(this, SubscribeActivity::class.java))}
+    private fun addActionListeners() {
+        btnLogin.setOnClickListener { startActivity(Intent(this, LoginActivity::class.java)) }
+        btnSubscribe.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    SubscribeActivity::class.java
+                )
+            )
+        }
         fab.setOnClickListener {
             snackbarWarning("Oopz, filter feature is not implemented yet")
         }
     }
 
+    private fun loadingData() {
+        swiperefresh.isRefreshing = true
+        animWaiting.visible()
+        fab.hide()
+        shiftsAdapter.setUpdatedData(ArrayList<Shift>())
+    }
+
+    private fun loadingDataSuccess(data: ShiftModel) {
+        fab.show()
+        animWaiting.gone()
+        swiperefresh.isRefreshing = false
+        shiftsAdapter.setUpdatedData(data.data as ArrayList<Shift>)
+    }
+
+    private fun loadingDataError() {
+        snackbarError("Something went wrong")
+        animWaiting.gone()
+        fab.show()
+        swiperefresh.isRefreshing = false
+        animNoData.visible()
+    }
+
     override fun onDateSet(view: DatePickerDialog?, year: Int, monthOfYear: Int, dayOfMonth: Int) {
-        txtDate.text = "$year-${(monthOfYear+1).withZero()}-${dayOfMonth.withZero()}"
+        txtDate.text = "$year-${(monthOfYear + 1).withZero()}-${dayOfMonth.withZero()}"
         forceRefresh()
     }
 }

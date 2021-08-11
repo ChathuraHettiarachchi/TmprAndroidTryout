@@ -1,5 +1,7 @@
 package com.example.temper.network
 
+import com.example.temper.models.ShiftModel
+import io.reactivex.Single
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -33,5 +35,9 @@ class TemperInstance {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         }
+    }
+
+    fun fetchShifts(date: String): Single<ShiftModel> {
+        return TemperInstance.getTemperInstance().create(TemperApi::class.java).getShiftsFromApi(date)
     }
 }
