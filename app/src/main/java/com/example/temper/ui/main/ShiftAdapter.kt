@@ -1,4 +1,4 @@
-package com.example.temper.adapters
+package com.example.temper.ui.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.temper.R
-import com.example.temper.models.Shift
+import com.example.temper.data.Shift
 import com.makeramen.roundedimageview.RoundedImageView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.single_item_main_work.view.*
@@ -23,14 +23,14 @@ class ShiftAdapter : RecyclerView.Adapter<ShiftAdapter.ShiftViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ShiftAdapter.ShiftViewHolder {
+    ): ShiftViewHolder {
         return ShiftViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.single_item_main_work, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: ShiftAdapter.ShiftViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ShiftViewHolder, position: Int) {
         holder.bind(items.get(position))
     }
 

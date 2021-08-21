@@ -3,13 +3,15 @@
 ## Android Libs used
 - FlashBar
 - Retrofit2
-- RxKotlin
+- Coroutine
 - CircleImageView
 - RoundedImageView
+- Lottie
 
 ## Functions
 - Can swipe to refresh
 - Can set date by tapping top left date
+- Test cases for API success and failure
 
 ## Features not included
-- Test cases are not working
+- N/A

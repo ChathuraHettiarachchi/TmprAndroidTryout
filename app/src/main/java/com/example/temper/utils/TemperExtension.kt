@@ -1,7 +1,8 @@
-package com.example.temper.helpers
+package com.example.temper.utils
 
 import android.app.Activity
 import android.graphics.Color
+import android.net.NetworkCapabilities
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.andrognito.flashbar.Flashbar
@@ -62,8 +63,12 @@ fun Activity.snackbarWaiting(message: String?){
 }
 
 fun Date.converted(format: String = "yyyy-MM-dd", locale: Locale = Locale.getDefault()): String {
-    val formatter = SimpleDateFormat(format, locale)
-    return formatter.format(this)
+    return try {
+        val formatter = SimpleDateFormat(format, locale)
+        formatter.format(this)
+    } catch (e: Exception){
+        "N/A"
+    }
 }
 
 fun View.gone(){
@@ -93,4 +98,10 @@ fun RecyclerView.attachFab(fab : ExtendedFloatingActionButton) {
 fun Int.withZero(): String{
     val date = this.toString()
     return if(date.length == 1) "0$date" else date
+}
+
+fun NetworkCapabilities.isConnected(): Boolean{
+    return this.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+            || this.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
+            || this.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)
 }

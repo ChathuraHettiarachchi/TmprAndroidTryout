@@ -4,8 +4,12 @@
     package="com.example.temper">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
 
     <application
+        android:name=".TemperApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,13 +18,13 @@
         android:theme="@style/Theme.Temper"
         tools:ignore="AllowBackup">
         <activity
-            android:name=".view.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".view.SubscribeActivity"
+            android:name=".ui.subscribe.SubscribeActivity"
             android:exported="true" />
         <activity
-            android:name=".view.SplashActivity"
+            android:name=".ui.splash.SplashActivity"
             android:exported="true"
             android:screenOrientation="locked"
             android:theme="@style/SplashTheme">
@@ -31,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:screenOrientation="locked" />
     </application>
 

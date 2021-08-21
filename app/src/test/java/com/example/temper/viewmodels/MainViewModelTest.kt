@@ -1,82 +1,95 @@
 package com.example.temper.viewmodels
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.Observer
-import com.example.temper.helpers.converted
-import com.example.temper.models.ShiftModel
-import com.example.temper.network.TemperApi
-import com.example.temper.network.TemperInstance
-import io.reactivex.Single
-import org.junit.*
+import com.example.temper.api.TemperApi
+import com.example.temper.data.ShiftModel
+import com.example.temper.data.ShiftRepository
+import com.example.temper.ui.main.MainViewModel
+import com.example.temper.util.TestCoroutineRule
+import com.example.temper.utils.Resource
+import com.example.temper.utils.converted
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import org.junit.After
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
+import org.junit.rules.TestRule
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
-import org.mockito.*
-import org.mockito.Mockito.mock
-
-import retrofit2.Retrofit
+import org.mockito.Mock
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.verify
+import org.mockito.junit.MockitoJUnitRunner
+import retrofit2.Response
 import java.util.*
 
-@RunWith(JUnit4::class)
+@ExperimentalCoroutinesApi
+@RunWith(MockitoJUnitRunner::class)
 class MainViewModelTest {
     @get:Rule
-    var instantExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
+    var testInstantTaskExecutorRule: TestRule = InstantTaskExecutorRule()
 
-    private var viewModel: MainViewModel? = null
+    @get:Rule
+    val testCoroutineRule = TestCoroutineRule()
+
+    @Mock
+    private lateinit var api: TemperApi
+
+    @Mock
+    private lateinit var repository: ShiftRepository
+
+    @Mock
+    private lateinit var apiShiftObserver: Observer<Resource<ShiftModel>>
+
     private lateinit var date: String
 
-    @Mock
-    lateinit var observer: Observer<ShiftViewState>
-
-    @Mock
-    lateinit var apiClient: TemperInstance
-
-    @Mock
-    lateinit var lifecycleOwner: LifecycleOwner
-    lateinit var lifecycle: Lifecycle
-
     @Before
-    @Throws(Exception::class)
-    fun setUp() {
-        MockitoAnnotations.openMocks(this)
-        lifecycle = LifecycleRegistry(lifecycleOwner)
-        viewModel = MainViewModel()
-        viewModel!!.shiftState().observeForever(observer)
-        apiClient = TemperInstance()
+    fun setup(){
         date = (Calendar.getInstance().time).converted()
     }
 
     @Test
-    fun testApiFetchToNull() {
-        Mockito.`when`(apiClient.fetchShifts(date))
-            .thenReturn(null)
-        Assert.assertNotNull(viewModel!!.shiftState())
-        Assert.assertTrue(viewModel!!.shiftState().hasObservers())
+    fun given_response200_when_fetch_should_return_success(){
+        testCoroutineRule.runBlockingTest {
+            `when`(api.fetchShifts(date)).thenReturn(Response.success(ShiftModel()))
+            repository = ShiftRepository(api)
+
+            val viewModel = MainViewModel(repository)
+            viewModel.shifts.observeForever(apiShiftObserver)
+            viewModel.requestShiftsFromTemper(date)
+
+            verify(apiShiftObserver).onChanged(Resource.loading(null))
+            verify(apiShiftObserver).onChanged(Resource.success(ShiftModel()))
+
+            viewModel.shifts.removeObserver(apiShiftObserver)
+        }
     }
 
     @Test
-    fun testApiFetchShiftToSuccess() {
-        Mockito.`when`(apiClient.fetchShifts(date)).thenReturn(Single.just(
-            ShiftModel()
-        ))
-        viewModel!!.fetchShifts(date)
-        Mockito.verify(observer).onChanged(ShiftViewState.LOADING_STATE)
-        Mockito.verify(observer).onChanged(ShiftViewState.SUCCESS_STATE)
-    }
+    fun given_serverError_when_fetch_should_return_error() {
+        testCoroutineRule.runBlockingTest {
 
-    @Test
-    fun testApiFetchShiftToError() {
-        Mockito.`when`(apiClient.fetchShifts(date)).thenReturn(Single.error(Throwable("Api error")))
-        viewModel!!.fetchShifts(date)
-        Mockito.verify(observer).onChanged(ShiftViewState.LOADING_STATE)
-        Mockito.verify(observer).onChanged(ShiftViewState.ERROR_STATE)
+            val errorMessage = "Error on fetching data from Temper"
+
+            `when`(api.fetchShifts(date)).thenThrow(RuntimeException(errorMessage))
+            repository = ShiftRepository(api)
+
+            val viewModel = MainViewModel(repository)
+            viewModel.shifts.observeForever(apiShiftObserver)
+            viewModel.requestShiftsFromTemper(date)
+
+            verify(apiShiftObserver).onChanged(Resource.loading(null))
+            verify(apiShiftObserver).onChanged(Resource.error(
+                errorMessage,
+                null
+            ))
+
+            viewModel.shifts.removeObserver(apiShiftObserver)
+        }
     }
 
     @After
-    @Throws(java.lang.Exception::class)
     fun tearDown() {
-        viewModel = null
+
     }
 }

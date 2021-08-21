@@ -1,4 +1,4 @@
-package com.example.temper.models
+package com.example.temper.data
 
 import com.google.gson.annotations.SerializedName
 

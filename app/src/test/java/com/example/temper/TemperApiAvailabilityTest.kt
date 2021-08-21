@@ -1,6 +1,6 @@
 package com.example.temper
 
-import com.example.temper.helpers.converted
+import com.example.temper.utils.converted
 import org.junit.Test
 import java.io.BufferedReader
 import java.io.InputStreamReader
